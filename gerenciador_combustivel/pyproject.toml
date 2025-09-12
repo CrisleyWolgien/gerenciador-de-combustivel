@@ -1,0 +1,37 @@
+[project]
+name = "gerenciador-combustivel"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "crisleywolgien",email = "crisleyws@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "fastapi (>=0.116.1,<0.117.0)",
+    "uvicorn[standard] (>=0.35.0,<0.36.0)",
+    "sqlmodel (>=0.0.24,<0.0.25)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "python-dotenv (>=1.1.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "gerenciador_combustivel", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.12"
+taskipy = "^1.14.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.taskipy.tasks]
+dev = "uvicorn src.gerenciador_combustivel.main:app --reload"
+lint = "ruff check ."
+format = "ruff check . --fix"
