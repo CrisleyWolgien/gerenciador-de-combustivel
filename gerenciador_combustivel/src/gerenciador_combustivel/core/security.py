@@ -11,9 +11,9 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlmodel import Session
 
-from core.db import get_session
-from models.user import Users
-from repositories import user_crud
+from ..core.db import get_session
+from ..models.user import Users
+from ..repositories import user_crud
 
 load_dotenv()
 

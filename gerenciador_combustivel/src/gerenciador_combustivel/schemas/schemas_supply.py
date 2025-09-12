@@ -1,7 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
-from uuid import UUID
-from datetime import datetime
+from datetime import date
 
 class createSupply(BaseModel):
     liters: float
@@ -17,3 +15,6 @@ class readSupply(BaseModel):
     class Config:
         orm_mode = True
 
+class SupplyFilter(BaseModel):
+    start_date: date
+    end_date: date

@@ -3,7 +3,6 @@ from uuid import UUID, uuid4
 
 from sqlmodel import Field, Relationship, SQLModel
 
-from gerenciador_combustivel.models.supply import Supply
 
 
 class Users(SQLModel, table=True):
@@ -12,5 +11,4 @@ class Users(SQLModel, table=True):
     password: str
     role: str = Field(default="operator")  # admin ou operator
 
-    supplies: List["Supply"] = Relationship(back_populates="operador")
-
+    supplies: "List[Supply]" = Relationship(back_populates="operador")

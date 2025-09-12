@@ -1,7 +1,7 @@
 from sqlmodel import Session, select
 
-from models.user import Users
-from schemas.schemas_user import createUser
+from ..models.user import Users
+from ..schemas.schemas_user import createUser
 
 def create_user(session: Session, user_in: createUser, hashed_password: str) -> Users:
 

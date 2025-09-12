@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import Session
 
-from core.db import get_session
-from schemas.schemas_user import createUser, userRead
-from services import user_service
-from core.security import get_current_user
-from models.user import Users
+from ..core.db import get_session
+from ..schemas.schemas_user import createUser
+from ..services import user_service
+from ..core.security import get_current_user
+from ..models.user import Users
 
 router = APIRouter(prefix="/users", tags=["Users"])
 

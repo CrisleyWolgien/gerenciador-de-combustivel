@@ -1,11 +1,8 @@
 from sqlmodel import Session
 from fastapi import HTTPException
 
-from repositories import user_crud
-from models.user import Users
-from schemas.schemas_user import createUser
-from repositories.user_crud import get_user_by_name, create_user
-from core.security import get_password_hash
+from ..schemas.schemas_user import createUser
+from ..repositories.user_crud import get_user_by_name, create_user
 
 def create_new_user(session: Session, user_in: createUser, hashed_password: str):
 

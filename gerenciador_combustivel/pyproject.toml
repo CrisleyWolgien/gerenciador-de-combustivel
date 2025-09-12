@@ -12,7 +12,9 @@ dependencies = [
     "uvicorn[standard] (>=0.35.0,<0.36.0)",
     "sqlmodel (>=0.0.24,<0.0.25)",
     "psycopg2-binary (>=2.9.10,<3.0.0)",
-    "python-dotenv (>=1.1.1,<2.0.0)"
+    "python-dotenv (>=1.1.1,<2.0.0)",
+    "python-jose (>=3.5.0,<4.0.0)",
+    "passlib (>=1.7.4,<2.0.0)"
 ]
 
 [tool.poetry]
@@ -32,6 +34,6 @@ line-length = 88
 target-version = "py310"
 
 [tool.taskipy.tasks]
-dev = "uvicorn src.gerenciador_combustivel.main:app --reload"
+dev = "uvicorn gerenciador_combustivel.main:app --reload"
 lint = "ruff check ."
 format = "ruff check . --fix"

@@ -1,6 +1,6 @@
 from sqlmodel import Session
-from models.vehicle import Vehicle
-from schemas.schemas_vehicle import CreateVehicle
+from ..models.vehicle import Vehicle
+from ..schemas.schemas_vehicle import CreateVehicle
 
 
 def create_vehicle(session: Session, vehicle_in: CreateVehicle):

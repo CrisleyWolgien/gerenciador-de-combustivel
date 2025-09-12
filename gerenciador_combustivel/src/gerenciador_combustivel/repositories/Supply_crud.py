@@ -1,10 +1,11 @@
-from sqlmodel import Session
-from models.supply import Supply
-from models.vehicle import Vehicle
-from models.user import Users
-from schemas.schemas_supply import createSupply
-from uuid import UUID
+from sqlmodel import Session, select
+from ..models.supply import Supply
+from ..models.vehicle import Vehicle
+from ..models.user import Users
+from ..schemas.schemas_supply import createSupply
 from fastapi import HTTPException
+from datetime import date
+from uuid import UUID
 
 
 
@@ -34,3 +35,15 @@ def create_supply(session: Session, supply: createSupply, user_id: UUID, vehicle
     session.refresh(session_supply)
     return session_supply
     
+
+
+
+def list_supply_by_date(session: Session, start_date: date, end_date: date) -> list[Supply]:
+    stmt = select(Supply).where(Supply.date >= start_date, Supply.date <= end_date)
+    return list(session.exec(stmt).all())
+
+def get_supply_by_vehicle(session: Session, vehicle_id: UUID) -> list[Supply]:
+    vehicle = session.get(Vehicle, vehicle_id)
+    if not vehicle:
+        return []
+    return vehicle.supplies
