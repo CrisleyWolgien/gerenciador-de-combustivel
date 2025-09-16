@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 from uuid import UUID, uuid4
 from sqlmodel import Field, Relationship, SQLModel
 
@@ -8,4 +8,6 @@ class Supply(SQLModel, table=True):
     km: float
     date: str
     user_id: UUID = Field(foreign_key="users.id")
-    operador: "Users" = Relationship(back_populates="supplies")  # <- use string
+    operador: "Users" = Relationship(back_populates="supplies")  # pyright: ignore[reportUndefinedVariable] # many-to-one  # noqa: F821
+    vehicle_id: int = Field(foreign_key="vehicle.id")
+    vehicle: Optional["Vehicle"] = Relationship(back_populates="supplies")# pyright: ignore[reportUndefinedVariable] # many-to-one  # noqa: F821

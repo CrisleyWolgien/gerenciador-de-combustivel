@@ -30,3 +30,5 @@ def read_supply_by_date(filter_in: SupplyFilter, session: Session = Depends(get_
 @router.get("/vehicles/{vehicle_id}/supplies", response_model=list[readSupply])
 def route_get_supplies_by_vehicle( vehicle_id: UUID, session:Session = Depends(get_session)):
     return Supply_crud.get_supply_by_vehicle(session, vehicle_id)
+
+
